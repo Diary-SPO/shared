@@ -137,6 +137,7 @@ export enum Grade {
 
 export enum LessonWorkType {
   'Lecture' = 'Лекция',
+  'Lesson' = 'Урок',
   'PracticalWork' = 'Практ. работа',
   'PracticalTraining' = 'Практ. занятие',
   'Seminar' = 'Семинар',

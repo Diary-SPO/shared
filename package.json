@@ -2,7 +2,7 @@
   "name": "diary-shared",
   "version": "1.6.2",
   "description": "types to diary spo responses",
-  "main": "index.d.ts",
+  "main": "index.ts",
   "keywords": [
     "types"
   ],
