@@ -184,7 +184,7 @@ export interface Timetable {
     id: number
     name: string
   },
-  teacher: Teacher
+  teacher?: Teacher
 }
 
 export interface Gradebook {
