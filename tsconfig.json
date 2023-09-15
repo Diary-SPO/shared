@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@diary-shared/*": ["./node_modules/diary-shared/*"],
-      "diary-shared/*": ["./node_modules/diary-shared/*"]
-    },
-    "allowSyntheticDefaultImports": true,
-    "module": "esnext",
-    "target": "ESNext",
-    "moduleResolution": "Node"
-  }
+    "declaration": true,
+    "outDir": "./dist",
+    "module": "CommonJS",
+    "target": "ES6",
+    "strict": true
+  },
+  "include": ["src/**/*.ts"]
 }
