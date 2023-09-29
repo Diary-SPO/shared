@@ -78,12 +78,14 @@ export interface Organization {
   }
 }
 
+export type TenantName = string;
+
 interface UserData {
   installName: string
   localNetwork: boolean
-  tenantName: string
+  tenantName: TenantName
   tenants: {
-    SPO_23: {
+    [key: TenantName]: {
       students: [
         {
           groupId: number,
