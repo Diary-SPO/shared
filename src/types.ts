@@ -80,7 +80,7 @@ export interface Organization {
 
 export type TenantName = string;
 
-interface UserData {
+export interface UserData {
   installName: string
   localNetwork: boolean
   tenantName: TenantName
