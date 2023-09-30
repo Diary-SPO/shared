@@ -111,49 +111,95 @@ export interface UserData {
   }
 }
 
-export enum LessonType {
-  'Lesson' = 'Ответ на занятии',
-  'Control' = 'Контрольная работа',
-  'Independent' = 'Самостоятельная работа',
-  'Laboratory' = 'Лабораторная работа',
-  'Slice' = 'Срезовая работа',
-  'Home' = 'Домашнее задание',
-  'Test' = 'Тест',
-  'Review' = 'Реферат',
-  'Report' = 'Доклад',
-  'Colloquium' = 'Коллоквиум',
-  'SportStandarts' = 'Сдача спортивных нармативов',
-  'PracticeWork' = 'Практическая работа',
-  '' = 'Не указано'
+export type LessonTypeKeys =
+  | 'Lesson'
+  | 'Control'
+  | 'Independent'
+  | 'Laboratory'
+  | 'Slice'
+  | 'Home'
+  | 'Test'
+  | 'Review'
+  | 'Report'
+  | 'Colloquium'
+  | 'SportStandarts'
+  | 'PracticeWork'
+  | '';
+
+export const LessonType: Record<LessonTypeKeys, string> = {
+  Lesson: 'Ответ на занятии',
+  Control: 'Контрольная работа',
+  Independent: 'Самостоятельная работа',
+  Laboratory: 'Лабораторная работа',
+  Slice: 'Срезовая работа',
+  Home: 'Домашнее задание',
+  Test: 'Тест',
+  Review: 'Реферат',
+  Report: 'Доклад',
+  Colloquium: 'Коллоквиум',
+  SportStandarts: 'Сдача спортивных нармативов',
+  PracticeWork: 'Практическая работа',
+  '': 'Не указано'
 }
 
-export enum Grade {
-  Five = 5,
-  Four = 4,
-  Three = 3,
-  Two = 2,
-  One = 1,
-  // Оценка пустая = долг
-  '' = 'Д',
-}
+export const Grade: Record<string, string | number> = {
+  Five: '5',
+  Four: '4',
+  Three: '3',
+  Two: '2',
+  One: '1',
+  '': 'Д', // Empty grade as 'Д'
+};
 
-export enum LessonWorkType {
-  'Lecture' = 'Лекция',
-  'Lesson' = 'Урок',
-  'PracticalWork' = 'Практ. работа',
-  'PracticalTraining' = 'Практ. занятие',
-  'Seminar' = 'Семинар',
-  '' = 'Не указан'
-}
+type LessonWorkTypeKeys =
+  | 'Lecture'
+  | 'Lesson'
+  | 'PracticalWork'
+  | 'PracticalTraining'
+  | 'Seminar'
+  | 'Practice'
+  | 'Laboratory'
+  | 'Self'
+  | 'Consultation'
+  | 'Excursion'
+  | 'Examination'
+  | 'Composition'
+  | 'BusinessGame'
+  | 'SportStandarts'
+  | '';
 
-export enum EAbsenceTypes {
-  'IsAbsent' = 'Н',
-  'IsLate' = 'О',
-}
+export const LessonWorkType: Record<LessonWorkTypeKeys, string> = {
+  Lecture: 'Лекция',
+  Lesson: 'Урок',
+  PracticalWork: 'Практ. работа',
+  PracticalTraining: 'Практ. занятие',
+  Seminar: 'Семинар',
+  Practice: 'Практика',
+  Laboratory: 'Лаб. занятие',
+  Self: 'Сам. работа',
+  Consultation: 'Консультация',
+  Excursion: 'Экскурсия',
+  Examination: 'Контр. работа',
+  Composition: 'Сочинение',
+  BusinessGame: 'Деловая игра',
+  SportStandarts: 'Сдача спорт. нормативов',
+  '': 'Не указан'
+};
 
-export enum EAbsenceTypesDescription {
-  'Н' = 'Отсутствие',
-  'О' = 'Опоздание',
+export type AbsenceTypesKeys =
+  | 'IsAbsent'
+  | 'IsLate'
+
+export const AbsenceTypes: Record<AbsenceTypesKeys, string> = {
+  IsAbsent: 'Н',
+  IsLate: 'О',
+};
+
+export type AbsenceTypesDescriptionKeys = 'Н' | 'О'
+
+export const AbsenceTypesDescription: Record<AbsenceTypesDescriptionKeys, string> = {
+  'Н': 'Отсутствие',
+  'О': 'Опоздание',
 }
 
 type GradeKeys = keyof typeof Grade;
@@ -162,7 +208,7 @@ export type TextMark = GradeKeys;
 export type TMark = typeof Grade[GradeKeys];
 export type TLesson = keyof typeof LessonWorkType;
 export type LessonTypes = keyof typeof LessonType;
-export type AbsenceType = keyof typeof EAbsenceTypes;
+export type AbsenceType = keyof typeof AbsenceTypes;
 
 export interface Task {
   attachments: []
@@ -249,11 +295,11 @@ export interface PerformanceCurrent {
   ],
 }
 
-export enum Examinations {
-  'DifferentiatedTest'= 'Дифф. зачёт',
-  'Test'= 'Зачёт',
-  'Exam'= 'Экзамен',
-  'Other'= 'Др. форма контроля',
+export const Examinations: Record<string, string> = {
+  DifferentiatedTest: 'Дифф. зачёт',
+  Test: 'Зачёт',
+  Exam: 'Экзамен',
+  Other: 'Др. форма контроля',
 }
 
 export type ExaminationType = keyof typeof Examinations;

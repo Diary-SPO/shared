@@ -1,8 +1,9 @@
 {
   "name": "diary-shared",
-  "version": "1.7.4",
+  "version": "1.8.0",
   "description": "types to diary spo responses",
-  "main": "index.ts",
+  "main": "src/types.ts",
+  "types": "src/types.ts",
   "keywords": [
     "types"
   ],
