@@ -143,15 +143,15 @@ export const LessonType: Record<LessonTypeKeys, string> = {
 }
 
 export const Grade: Record<string, string | number> = {
-  Five: '5',
-  Four: '4',
-  Three: '3',
-  Two: '2',
-  One: '1',
+  Five: 5,
+  Four: 4,
+  Three: 3,
+  Two: 2,
+  One: 1,
   '': 'Д', // Empty grade as 'Д'
 };
 
-type LessonWorkTypeKeys =
+export type LessonWorkTypeKeys =
   | 'Lecture'
   | 'Lesson'
   | 'PracticalWork'
@@ -202,7 +202,7 @@ export const AbsenceTypesDescription: Record<AbsenceTypesDescriptionKeys, string
   'О': 'Опоздание',
 }
 
-type GradeKeys = keyof typeof Grade;
+export type GradeKeys = keyof typeof Grade;
 
 export type TextMark = GradeKeys;
 export type TMark = typeof Grade[GradeKeys];
@@ -219,7 +219,7 @@ export interface Task {
   type: LessonTypes
 }
 
-interface Teacher {
+export interface Teacher {
   firstName: string
   id: number
   lastName: string
