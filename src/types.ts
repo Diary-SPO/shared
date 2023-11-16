@@ -1,5 +1,7 @@
 // Эти данные приходят с бэка сетевого города, типизация актуальна на момент 04.09.23
 // В некоторых местах типизация может быть не полной
+import { Person } from "./base.ts";
+
 export interface Organization {
   // Example: 'spo'
   'organizationType': string,
@@ -80,35 +82,33 @@ export interface Organization {
 
 export type TenantName = string;
 
+export interface AuthStudent extends Person {
+  groupId: number
+  groupName: string
+}
+
+export interface Tenants {
+  [key: TenantName]: {
+    students: AuthStudent[],
+    firstName: string
+    isTrusted: boolean
+    lastName: string
+    middleName: string
+    studentRole: {
+      id: number
+      studentGroupId: number
+    },
+    settings: {
+      organization: Organization
+    },
+  }
+}
+
 export interface UserData {
   installName: string
   localNetwork: boolean
   tenantName: TenantName
-  tenants: {
-    [key: TenantName]: {
-      students: [
-        {
-          groupId: number,
-          groupName: string,
-          firstName: string,
-          lastName: string,
-          middleName: string,
-          id: number
-        }
-      ],
-      firstName: string
-      isTrusted: boolean
-      lastName: string
-      middleName: string
-      studentRole: {
-        id: number
-        studentGroupId: number
-      },
-      settings: {
-        organization: Organization
-      },
-    }
-  }
+  tenants: Tenants
 }
 
 export type LessonTypeKeys =
@@ -315,12 +315,7 @@ export const Examinations: Record<ExaminationsKeys, string> = {
 export type ExaminationType = keyof typeof Examinations;
 export type TermType = 'Semester';
 
-export interface Student {
-  id: number;
-  firstName: string;
-  lastName: string;
-  middleName: string;
-}
+export interface Student extends Person {}
 
 export interface Subject {
   examinationType: ExaminationType;
