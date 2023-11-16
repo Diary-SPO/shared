@@ -264,38 +264,48 @@ export interface IMark {
     id: number
     mark: TMark
     name: string
-  }[]
+  }
 }
+
+export type IMarks = IMark[]
 
 export interface AuthData {
   cookie: string
   data: UserData
 }
 
-export interface PerformanceCurrent {
-  daysWithMarksForSubject: [{
-    subjectName: string;
-    daysWithMarks?: [
-      {
-        day: Date;
-        absenceType?: AbsenceType;
-        markValues: TextMark[];
-      }
-    ];
-    averageMark: TMark;
-  }],
-  monthsWithDays: [
-    {
-      month: {
-        num: number,
-        name: string
-      },
-      daysWithLessons: [Date]
-    }
-  ],
+export interface DayWithMarks {
+  day: Date;
+  absenceType?: AbsenceType;
+  markValues: TextMark[];
 }
 
-export const Examinations: Record<string, string> = {
+export interface DayWithMarksForSubject {
+  subjectName: string;
+  daysWithMarks?: DayWithMarks[];
+  averageMark: TMark;
+}
+
+export interface MonthsWithDays {
+  month: {
+    num: number,
+    name: string
+  },
+  daysWithLessons: Date[]
+}
+
+export interface PerformanceCurrent {
+  daysWithMarksForSubject: DayWithMarksForSubject[],
+  monthsWithDays: MonthsWithDays[],
+}
+
+export type ExaminationsKeys =
+  | 'DifferentiatedTest'
+  | 'Test'
+  | 'Exam'
+  | 'Other'
+
+export const Examinations: Record<ExaminationsKeys, string> = {
   DifferentiatedTest: 'Дифф. зачёт',
   Test: 'Зачёт',
   Exam: 'Экзамен',
@@ -305,22 +315,26 @@ export const Examinations: Record<string, string> = {
 export type ExaminationType = keyof typeof Examinations;
 export type TermType = 'Semester';
 
+export interface Student {
+  id: number;
+  firstName: string;
+  lastName: string;
+  middleName: string;
+}
+
+export interface Subject {
+  examinationType: ExaminationType;
+  marks: Record<string, number>;
+  name: string;
+  id: number;
+}
+
 export interface AttestationResponse {
   termType: TermType;
   termNumber: number;
   year: number;
-  students: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    middleName: string;
-  }[];
-  subjects: {
-    examinationType: ExaminationType;
-    marks: Record<string, number>;
-    name: string;
-    id: number;
-  }[];
+  students: Student[];
+  subjects: Subject[];
   profModules: unknown[];
   courseWorks: unknown[];
   departmentName: string;
