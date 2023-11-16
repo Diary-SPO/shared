@@ -4,6 +4,7 @@
   "description": "types to diary spo responses",
   "main": "src/types.ts",
   "types": "src/types.ts",
+  "repository":"https://github.com/Diary-SPO/shared",
   "keywords": [
     "types"
   ],
