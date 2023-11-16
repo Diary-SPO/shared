@@ -11,14 +11,22 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm login
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          npm-cache: true
+
+      - name: Create .npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{secrets.npm_token}}" > ~/.npmrc
+
+      - name: Debug npm environment
+        run: npm config list
+
+      - name: Publish to npm
+        run: npm publish
+
