@@ -219,12 +219,7 @@ export interface Task {
   type: LessonTypes
 }
 
-export interface Teacher {
-  firstName: string
-  id: number
-  lastName: string
-  middleName: string
-}
+export interface Teacher extends Person {}
 
 export interface Timetable {
   classroom: {
