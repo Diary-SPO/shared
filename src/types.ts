@@ -89,12 +89,12 @@ export interface AuthStudent extends Person {
 
 export interface Tenants {
   [key: TenantName]: {
-    students: AuthStudent[],
     firstName: string
     isTrusted: boolean
     lastName: string
     middleName: string
     studentRole: {
+      students: AuthStudent[],
       id: number
       studentGroupId: number
     },

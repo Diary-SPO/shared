@@ -1,6 +1,6 @@
 {
   "name": "@diary-spo/shared",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "description": "types to diary spo responses",
   "main": "src/types.ts",
   "types": "src/types.ts",
