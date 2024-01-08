@@ -1,86 +1,93 @@
 // Эти данные приходят с бэка сетевого города, типизация актуальна на момент 04.09.23
 // В некоторых местах типизация может быть не полной
-import { Person } from "./base.ts";
+import { Person } from './base.ts'
+import {
+  AbsenceTypesDescriptionKeys,
+  AbsenceTypesKeys,
+  ExaminationKeys,
+  LessonTypeKeys,
+  LessonWorkTypeKeys
+} from './keys.ts'
 
 export interface Organization {
   // Example: 'spo'
-  'organizationType': string,
-  'name': string,
-  'shortName': string,
-  'abbreviation': string,
-  'legalStatus': string,
-  'address': {
-    'region': string,
+  organizationType: string
+  name: string
+  shortName: string
+  abbreviation: string
+  legalStatus: string
+  address: {
+    region: string
     // Example: 'г. Томск'
-    'settlement': string,
-    'mailAddress': string,
+    settlement: string
+    mailAddress: string
     // Example: '70000001000000000'
-    'kladr': string
-  },
-  'organizationDeptId': 1,
-  'phone': string,
-  'fax': string,
-  'email': string,
-  'site': string,
-  'directorName': string,
-  'directorPosition': string,
+    kladr: string
+  }
+  organizationDeptId: 1
+  phone: string
+  fax: string
+  email: string
+  site: string
+  directorName: string
+  directorPosition: string
   // Example: ''
-  'studyUnitNumber': string,
+  studyUnitNumber: string
   // Example: 'Function'
-  'organizationStatus': string,
-  'isEntrepreneurOwned': boolean,
+  organizationStatus: string
+  isEntrepreneurOwned: boolean
   // Example: ''
-  'entrepreneurName': string,
+  entrepreneurName: string
   // Example: '4e97a34f-b553-42ec-8c26-bc30332d0661'
-  'organizationId': string,
+  organizationId: string
   // Example: ''
-  'headOrganizationName': string,
-  'isSubdepartment': boolean,
+  headOrganizationName: string
+  isSubdepartment: boolean
   // Example: ''
-  'additionalName': string,
-  'type': string,
-  'legalAddress': string,
-  'actualAddress': string,
-  'bankingDetails': {
-    'okved': string,
-    'inn': string,
-    'kpp': string,
-    'ogrn': string,
-    'oktmo': string,
-    'okopth': string,
-    'okths': string,
-    'okpo': string,
-    'others': string,
-    'okogu': string,
-    'founderType': string,
+  additionalName: string
+  type: string
+  legalAddress: string
+  actualAddress: string
+  bankingDetails: {
+    okved: string
+    inn: string
+    kpp: string
+    ogrn: string
+    oktmo: string
+    okopth: string
+    okths: string
+    okpo: string
+    others: string
+    okogu: string
+    founderType: string
     // Example: ''
-    'founders': string,
-    'okato': string
-  },
-  'administration': {
-    'eService': {
-      'isEnabled': true,
-      'cacheEnrolleeListTimeout': number,
-      'cacheSpecialtyListTimeout': number,
-      'cacheEnrolleeTimeout': number,
-      'useRestIntegration': true
-    },
+    founders: string
+    okato: string
+  }
+  administration: {
+    eService: {
+      isEnabled: true
+      cacheEnrolleeListTimeout: number
+      cacheSpecialtyListTimeout: number
+      cacheEnrolleeTimeout: number
+      useRestIntegration: true
+    }
     // Example: 4e97a34f-b553-42ec-8c26-bc30332d0661
-    'organizationId': string,
-    'attestation': {
-      'isEnabled': boolean
-    },
-    'factHours': {
-      'isEnabled': boolean
-    },
-    'vkChats': {
-      'communityId': string,
-      'communityToken': string
+    organizationId: string
+    attestation: {
+      isEnabled: boolean
+    }
+    factHours: {
+      isEnabled: boolean
+    }
+    vkChats: {
+      communityId: string
+      communityToken: string
     }
   }
 }
 
-export type TenantName = string;
+export type TenantName = string
 
 export interface AuthStudent extends Person {
   groupId: number
@@ -94,13 +101,13 @@ export interface Tenants {
     lastName: string
     middleName: string
     studentRole: {
-      students: AuthStudent[],
+      students: AuthStudent[]
       id: number
       studentGroupId: number
-    },
+    }
     settings: {
       organization: Organization
-    },
+    }
   }
 }
 
@@ -110,21 +117,6 @@ export interface UserData {
   tenantName: TenantName
   tenants: Tenants
 }
-
-export type LessonTypeKeys =
-  | 'Lesson'
-  | 'Control'
-  | 'Independent'
-  | 'Laboratory'
-  | 'Slice'
-  | 'Home'
-  | 'Test'
-  | 'Review'
-  | 'Report'
-  | 'Colloquium'
-  | 'SportStandarts'
-  | 'PracticeWork'
-  | '';
 
 export const LessonType: Record<LessonTypeKeys, string> = {
   Lesson: 'Ответ на занятии',
@@ -148,25 +140,8 @@ export const Grade: Record<string, string | number> = {
   Three: 3,
   Two: 2,
   One: 1,
-  '': 'Д', // Empty grade as 'Д'
-};
-
-export type LessonWorkTypeKeys =
-  | 'Lecture'
-  | 'Lesson'
-  | 'PracticalWork'
-  | 'PracticalTraining'
-  | 'Seminar'
-  | 'Practice'
-  | 'Laboratory'
-  | 'Self'
-  | 'Consultation'
-  | 'Excursion'
-  | 'Examination'
-  | 'Composition'
-  | 'BusinessGame'
-  | 'SportStandarts'
-  | '';
+  '': 'Д' // Empty grade as 'Д'
+}
 
 export const LessonWorkType: Record<LessonWorkTypeKeys, string> = {
   Lecture: 'Лекция',
@@ -184,31 +159,28 @@ export const LessonWorkType: Record<LessonWorkTypeKeys, string> = {
   BusinessGame: 'Деловая игра',
   SportStandarts: 'Сдача спорт. нормативов',
   '': 'Не указан'
-};
-
-export type AbsenceTypesKeys =
-  | 'IsAbsent'
-  | 'IsLate'
+}
 
 export const AbsenceTypes: Record<AbsenceTypesKeys, string> = {
   IsAbsent: 'Н',
-  IsLate: 'О',
-};
-
-export type AbsenceTypesDescriptionKeys = 'Н' | 'О'
-
-export const AbsenceTypesDescription: Record<AbsenceTypesDescriptionKeys, string> = {
-  'Н': 'Отсутствие',
-  'О': 'Опоздание',
+  IsLate: 'О'
 }
 
-export type GradeKeys = keyof typeof Grade;
+export const AbsenceTypesDescription: Record<
+  AbsenceTypesDescriptionKeys,
+  string
+> = {
+  Н: 'Отсутствие',
+  О: 'Опоздание'
+}
 
-export type TextMark = GradeKeys;
-export type TMark = typeof Grade[GradeKeys];
-export type TLesson = keyof typeof LessonWorkType;
-export type LessonTypes = keyof typeof LessonType;
-export type AbsenceType = keyof typeof AbsenceTypes;
+export type GradeKeys = keyof typeof Grade
+
+export type TextMark = GradeKeys
+export type TMark = (typeof Grade)[GradeKeys]
+export type TLesson = keyof typeof LessonWorkType
+export type LessonTypes = keyof typeof LessonType
+export type AbsenceType = keyof typeof AbsenceTypes
 
 export interface Task {
   attachments: []
@@ -219,14 +191,14 @@ export interface Task {
   type: LessonTypes
 }
 
-export interface Teacher extends Person {}
+export type Teacher = Person
 
 export interface Timetable {
   classroom: {
     building: string
     id: number
     name: string
-  },
+  }
   teacher?: Teacher
 }
 
@@ -245,12 +217,12 @@ export interface Lesson {
   startTime: string
   name: string | null
   timetable: Timetable
-  gradebook?: Gradebook,
-  tasks?: Task[],
+  gradebook?: Gradebook
+  tasks?: Task[]
 }
 
 export interface Day {
-  date: Date;
+  date: Date
   lessons: Lesson[] | null
 }
 
@@ -270,75 +242,69 @@ export interface AuthData {
 }
 
 export interface DayWithMarks {
-  day: Date;
-  absenceType?: AbsenceType;
-  markValues: TextMark[];
+  day: Date
+  absenceType?: AbsenceType
+  markValues: TextMark[]
 }
 
 export interface DayWithMarksForSubject {
-  subjectName: string;
-  daysWithMarks?: DayWithMarks[];
-  averageMark: TMark;
+  subjectName: string
+  daysWithMarks?: DayWithMarks[]
+  averageMark: TMark
 }
 
 export interface MonthsWithDays {
   month: {
-    num: number,
+    num: number
     name: string
-  },
+  }
   daysWithLessons: Date[]
 }
 
 export interface PerformanceCurrent {
-  daysWithMarksForSubject: DayWithMarksForSubject[],
-  monthsWithDays: MonthsWithDays[],
+  daysWithMarksForSubject: DayWithMarksForSubject[]
+  monthsWithDays: MonthsWithDays[]
 }
 
-export type ExaminationsKeys =
-  | 'DifferentiatedTest'
-  | 'Test'
-  | 'Exam'
-  | 'Other'
-
-export const Examinations: Record<ExaminationsKeys, string> = {
+export const Examinations: Record<ExaminationKeys, string> = {
   DifferentiatedTest: 'Дифф. зачёт',
   Test: 'Зачёт',
   Exam: 'Экзамен',
-  Other: 'Др. форма контроля',
+  Other: 'Др. форма контроля'
 }
 
-export type ExaminationType = keyof typeof Examinations;
-export type TermType = 'Semester';
+export type ExaminationType = keyof typeof Examinations
+export type TermType = 'Semester'
 
-export interface Student extends Person {}
+export type Student = Person
 
 export interface Subject {
-  examinationType: ExaminationType;
-  marks: Record<string, number>;
-  name: string;
-  id: number;
+  examinationType: ExaminationType
+  marks: Record<string, number>
+  name: string
+  id: number
 }
 
 export interface AttestationResponse {
-  termType: TermType;
-  termNumber: number;
-  year: number;
-  students: Student[];
-  subjects: Subject[];
-  profModules: unknown[];
-  courseWorks: unknown[];
-  departmentName: string;
+  termType: TermType
+  termNumber: number
+  year: number
+  students: Student[]
+  subjects: Subject[]
+  profModules: unknown[]
+  courseWorks: unknown[]
+  departmentName: string
 }
 
 export interface NotificationsResponse {
-  id: number,
-  attachments: [],
-  date: Date,
-  title: string,
+  id: number
+  attachments: []
+  date: Date
+  title: string
   text: string
-  isForEmployees: boolean,
-  isForStudents: boolean,
-  isForParents: boolean,
-  shouldDeleteNews: boolean,
+  isForEmployees: boolean
+  isForStudents: boolean
+  isForParents: boolean
+  shouldDeleteNews: boolean
   deleteInDays: number
 }
