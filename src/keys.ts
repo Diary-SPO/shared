@@ -1,4 +1,4 @@
-export type LessonTypeKeys =
+export type LessonWorkTypeKeys =
   | 'Lesson'
   | 'Control'
   | 'Independent'
@@ -13,7 +13,7 @@ export type LessonTypeKeys =
   | 'PracticeWork'
   | ''
 
-export type LessonWorkTypeKeys =
+export type LessonTypeKeys =
   | 'Lecture'
   | 'Lesson'
   | 'PracticalWork'

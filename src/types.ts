@@ -118,7 +118,7 @@ export interface UserData {
   tenants: Tenants
 }
 
-export const LessonType: Record<LessonTypeKeys, string> = {
+export const LessonWorkType: Record<LessonWorkTypeKeys, string> = {
   Lesson: 'Ответ на занятии',
   Control: 'Контрольная работа',
   Independent: 'Самостоятельная работа',
@@ -143,7 +143,7 @@ export const Grade: Record<string, string | number> = {
   '': 'Д' // Empty grade as 'Д'
 }
 
-export const LessonWorkType: Record<LessonWorkTypeKeys, string> = {
+export const LessonType: Record<LessonTypeKeys, string> = {
   Lecture: 'Лекция',
   Lesson: 'Урок',
   PracticalWork: 'Практ. работа',
