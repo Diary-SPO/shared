@@ -10,7 +10,7 @@ export type LessonWorkTypeKeys =
   | 'Report'
   | 'Colloquium'
   | 'SportStandarts'
-  | 'PracticeWork'
+  | 'PracticalWork'
   | ''
 
 export type LessonTypeKeys =

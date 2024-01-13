@@ -130,7 +130,7 @@ export const LessonWorkType: Record<LessonWorkTypeKeys, string> = {
   Report: 'Доклад',
   Colloquium: 'Коллоквиум',
   SportStandarts: 'Сдача спортивных нармативов',
-  PracticeWork: 'Практическая работа',
+  PracticalWork: 'Практическая работа',
   '': 'Не указано'
 }
 
