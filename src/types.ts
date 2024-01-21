@@ -188,7 +188,7 @@ export interface Task {
   isRequired: boolean
   mark: TextMark
   topic?: string
-  type: LessonTypes
+  type: TLesson
 }
 
 export type Teacher = Person
@@ -204,10 +204,9 @@ export interface Timetable {
 
 export interface Gradebook {
   id: number
-  lessonType: TLesson
+  lessonType: LessonTypes
   tasks?: Task[]
   themes?: string[]
-  // TODO: возможно есть другие значения
   absenceType?: AbsenceType
 }
 
@@ -233,8 +232,6 @@ export interface IMark {
     name: string
   }
 }
-
-export type IMarks = IMark[]
 
 export interface AuthData {
   cookie: string
@@ -276,8 +273,6 @@ export const Examinations: Record<ExaminationKeys, string> = {
 export type ExaminationType = keyof typeof Examinations
 export type TermType = 'Semester'
 
-export type Student = Person
-
 export interface Subject {
   examinationType: ExaminationType
   marks: Record<string, number>
@@ -289,7 +284,7 @@ export interface AttestationResponse {
   termType: TermType
   termNumber: number
   year: number
-  students: Student[]
+  students: Person[]
   subjects: Subject[]
   profModules: unknown[]
   courseWorks: unknown[]
